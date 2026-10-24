@@ -1,1 +1,800 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#173b34">
+	<meta name="description" content="Terminarz przygotowań do Akcji Zimowej 2027. Warunki wyjazdu, ważne terminy i przydatne linki.">
+	<title>Terminarz AZ 2027</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--ink: #19251f;
+			--muted: #58675f;
+			--paper: #f8f2dc;
+			--surface: #fff;
+			--line: #d7d1b9;
+			--green: #277746;
+			--green-dark: #1d603a;
+			--green-soft: #e4f1cf;
+			--orange: #c44a36;
+			--orange-soft: #ffebe1;
+			--yellow: #f4cf50;
+			--blue: #4d8fbd;
+			--sans: "DM Sans", "Trebuchet MS", sans-serif;
+			--content: 1160px;
+		}
 
+		*, *::before, *::after { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding: 90px 0 120px; }
+		body {
+			margin: 0;
+			padding-bottom: calc(112px + env(safe-area-inset-bottom));
+			background-color: var(--paper);
+			background-image: linear-gradient(rgba(45, 76, 51, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 76, 51, .035) 1px, transparent 1px);
+			background-size: 24px 24px;
+			color: var(--ink);
+			font-family: var(--sans);
+			font-size: 16px;
+			line-height: 1.65;
+			-webkit-font-smoothing: antialiased;
+		}
+		a { color: inherit; }
+		button { font: inherit; }
+		.wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+
+		.site-header {
+			position: relative;
+			z-index: 2;
+			background: #fff;
+			border-bottom: 3px solid var(--ink);
+			box-shadow: 0 4px 0 rgba(25, 37, 31, .08);
+		}
+		.header-inner {
+			display: flex;
+			min-height: 74px;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+		}
+		.brand {
+			display: inline-flex;
+			align-items: center;
+			gap: 11px;
+			color: var(--green-dark);
+			font-size: 13px;
+			font-weight: 700;
+			letter-spacing: .08em;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+		.brand-mark {
+			display: grid;
+			width: 34px;
+			height: 52px;
+			place-items: center;
+			border: 2px solid var(--ink);
+			background: var(--yellow);
+			box-shadow: 3px 3px 0 var(--ink);
+			font-size: 12px;
+			letter-spacing: 0;
+			color: var(--ink);
+		}
+		.top-nav { display: flex; gap: 28px; }
+		.top-nav a {
+			color: #4e5c56;
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration: none;
+			transition: color .18s ease;
+		}
+		.top-nav a:hover { color: var(--orange); }
+
+		h1, h2, h3, p { margin-top: 0; }
+		.intro { padding-block: 28px 12px; }
+		.intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 32px; }
+		.greeting { margin-bottom: 12px; color: var(--green-dark); font-family: var(--sans); font-size: 26px; font-weight: 800; line-height: 1.3; }
+		.intro-copy { max-width: 740px; margin: 0; color: #53615b; font-size: 16px; }
+		.intro-note {
+			padding: 16px 18px;
+			border: 2px solid var(--ink);
+			border-left: 7px solid var(--orange);
+			background: #fff;
+			box-shadow: 4px 4px 0 var(--ink);
+		}
+		.intro-note strong { display: block; margin-bottom: 5px; color: #72371f; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; }
+		.intro-note p { margin: 0; color: #634b40; font-size: 14px; line-height: 1.55; }
+
+		.section { padding-block: 56px; }
+		.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+		.section-kicker { margin-bottom: 10px; color: var(--orange); font-family: var(--sans); font-size: 11px; font-weight: 800; line-height: 1.5; }
+		.section-heading h2 { margin-bottom: 0; font-family: var(--sans); font-size: 26px; font-weight: 800; line-height: 1.3; }
+		.section-heading p { max-width: 390px; margin: 0; color: var(--muted); font-size: 14px; }
+
+		.conditions { background: #e8f0d8; border-block: 3px solid var(--ink); }
+		.condition-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+		.condition-card {
+			min-height: 100%;
+			padding: 23px 24px;
+			border: 2px solid var(--ink);
+			border-top: 7px solid var(--green);
+			background: #fffdf4;
+			box-shadow: 5px 5px 0 var(--ink);
+		}
+		.condition-card.winter { border-top-color: var(--orange); }
+		.condition-label { margin-bottom: 8px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+		.condition-card h3 { margin-bottom: 18px; color: var(--green-dark); font-family: var(--sans); font-size: 17px; font-weight: 800; line-height: 1.4; }
+		.condition-card.winter h3 { color: #793d25; }
+		.condition-card ul { display: grid; gap: 15px; margin: 0; padding: 0; list-style: none; }
+		.condition-card li { position: relative; padding-left: 25px; color: #4d5b55; font-size: 14px; }
+		.condition-card li::before {
+			position: absolute;
+			top: 2px;
+			left: 0;
+			display: grid;
+			width: 17px;
+			height: 17px;
+			place-items: center;
+			border: 1px solid #91a79a;
+			border-radius: 50%;
+			color: var(--green);
+			content: "✓";
+			font-size: 10px;
+			font-weight: 700;
+		}
+		.condition-card.winter li::before { border-color: #d6a68e; color: var(--orange); }
+		.condition-card strong { color: var(--ink); }
+		.critical-note { margin: 19px 0 0; padding-top: 14px; border-top: 1px solid var(--line); color: #8a3f24; font-size: 12px; font-weight: 700; }
+
+		.schedule-section { padding-block: 24px 64px; }
+		.schedule-heading { align-items: center; margin-bottom: 22px; }
+		.filter-wrap { display: flex; flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 24px; padding: 13px; border: 2px solid var(--ink); background: #fff; box-shadow: 5px 5px 0 var(--ink); }
+		.filter-group { display: flex; align-items: center; gap: 14px; }
+		.filter-label { flex: 0 0 120px; color: var(--muted); font-size: 12px; font-weight: 800; }
+		.filters { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+		.filter-button {
+			min-height: 44px;
+			padding: 8px 14px;
+			border: 2px solid var(--ink);
+			border-radius: 0;
+			background: #f6f0dc;
+			color: var(--ink);
+			cursor: pointer;
+			font-size: 13px;
+			font-weight: 700;
+			box-shadow: 3px 3px 0 var(--ink);
+			transition: transform .12s steps(2, end), box-shadow .12s steps(2, end), background .12s ease;
+		}
+		.filter-button:hover { background: #e9f2d6; }
+		.filter-button:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
+		.filter-button[data-filter="upcoming"] { border-color: var(--green-dark); }
+		.filter-button[data-filter="overdue"] { border-color: var(--orange); }
+		.filter-button[data-event-filter="holiday"] { border-color: var(--orange); }
+		.filter-button[data-event-filter="winter"] { border-color: var(--blue); }
+		.filter-button[aria-pressed="true"] { background: var(--yellow); }
+		.filter-button:focus-visible, a:focus-visible { outline: 3px solid #e2a858; outline-offset: 3px; }
+		.result-count { align-self: flex-end; margin: 0; color: var(--muted); font-size: 12px; }
+		.timeline-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: start; gap: 50px; }
+		.timeline { min-width: 0; }
+		.month-group + .month-group { margin-top: 34px; }
+		.month-title { display: flex; align-items: center; gap: 12px; margin: 0 0 9px; color: #58665f; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+		.month-title::after { height: 1px; flex: 1; background: var(--line); content: ""; }
+		.timeline-item {
+			position: relative;
+			display: grid;
+			grid-template-columns: 110px minmax(0, 1fr);
+			gap: 16px;
+			margin-bottom: 8px;
+			padding: 15px;
+			border: 2px solid var(--ink);
+			border-left: 7px solid var(--blue);
+			background: #fffdf5;
+			box-shadow: 3px 3px 0 rgba(25, 37, 31, .3);
+			animation: arrive .36s ease both;
+		}
+		.timeline-item[hidden], .month-group[hidden] { display: none; }
+		.date-block { padding-top: 2px; }
+		.date-label { display: block; color: var(--green-dark); font-size: 13px; font-weight: 700; line-height: 1.4; }
+		.date-year { display: block; margin-top: 2px; color: #8a9690; font-size: 11px; }
+		.event-title-row { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-bottom: 7px; }
+		.event-title { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.35; }
+		.event-status {
+			display: inline-flex;
+			min-height: 22px;
+			align-items: center;
+			padding: 2px 8px;
+			border: 1px solid var(--ink);
+			border-radius: 0;
+			background: var(--green-soft);
+			color: #315a46;
+			font-size: 10px;
+			font-weight: 700;
+			line-height: 1.2;
+		}
+		.event-status.is-near { border-color: #815f00; background: var(--yellow); color: #473400; }
+		.event-status.is-overdue { border-color: #8d2e21; background: #f5a18a; color: #542015; }
+		.event-status.is-now { background: #e7eef8; color: #3f5d7b; }
+		.event-status.is-open { background: #edf0ed; color: #59665f; }
+		.event-description { margin: 0; color: #5d6963; font-size: 14px; line-height: 1.6; }
+		.event-description a, .inline-link { color: #215b47; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+		.event-description a:hover, .inline-link:hover { color: var(--orange); }
+		.event-extra { margin-top: 9px; color: #87918c; font-size: 12px; }
+		.no-results { padding: 24px 20px; border: 2px dashed #8c8875; color: var(--muted); text-align: center; }
+		.schedule-aside { position: sticky; top: 24px; }
+		.aside-note { margin-bottom: 24px; padding: 19px 20px; border: 2px solid var(--ink); background: var(--green-dark); box-shadow: 4px 4px 0 var(--ink); color: #fff; }
+		.aside-note-label { margin-bottom: 8px; color: #e9ca7c; font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+		.aside-note p { margin: 0; color: #e4ebe5; font-size: 13px; line-height: 1.65; }
+		.aside-note strong { color: #fff; }
+		.aside-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: #f5d889; font-size: 12px; font-weight: 700; text-decoration: none; }
+		.aside-link::after { content: "↗"; transition: transform .18s ease; }
+		.aside-link:hover::after { transform: translate(2px, -2px); }
+		.aside-title { margin-bottom: 10px; color: #77837d; font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+
+		.resources { padding-block: 56px; background: #dcebf2; border-block: 3px solid var(--ink); }
+		.resource-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+		.resource-link {
+			display: flex;
+			min-height: 128px;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 17px;
+			border: 2px solid var(--ink);
+			background: #fffdf5;
+			color: var(--ink);
+			text-decoration: none;
+			box-shadow: 3px 3px 0 var(--ink);
+			transition: transform .12s steps(2, end), box-shadow .12s steps(2, end), background .12s ease;
+		}
+		.resource-link:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); background: var(--yellow); }
+		.resource-number { color: #9aa59f; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+		.resource-name { max-width: 170px; margin: 20px 0 0; font-size: 13px; font-weight: 700; line-height: 1.4; }
+		.resource-arrow { align-self: end; color: var(--orange); font-size: 16px; }
+		.closing { padding-block: 40px 48px; }
+		.closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+		.closing p { max-width: 750px; margin: 0; color: #596760; font-size: 14px; }
+		.contact-link { flex: 0 0 auto; color: var(--green); font-size: 13px; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+		.winter-dock {
+			position: fixed;
+			z-index: 20;
+			inset: auto 0 0;
+			padding-bottom: env(safe-area-inset-bottom);
+			border-top: 3px solid var(--ink);
+			background: var(--green-dark);
+			box-shadow: 0 -4px 0 rgba(25, 37, 31, .12);
+			color: #fff;
+		}
+		.dock-scene {
+			position: relative;
+			height: 34px;
+			overflow: hidden;
+			border-bottom: 2px solid var(--ink);
+			background-color: #bcdce9;
+			background-image: radial-gradient(circle, #fff 1.5px, transparent 2px), radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1.5px);
+			background-position: 8px 7px, 21px 16px;
+			background-size: 29px 21px, 37px 23px;
+		}
+		.dock-snow {
+			position: absolute;
+			inset: auto 0 0;
+			height: 7px;
+			background: #fffdf4;
+		}
+		.dock-tree {
+			position: absolute;
+			bottom: 4px;
+			width: 19px;
+			height: 25px;
+			background: #286441;
+			clip-path: polygon(50% 0, 100% 33%, 76% 33%, 100% 64%, 72% 64%, 100% 100%, 0 100%, 28% 64%, 0 64%, 24% 33%, 0 33%);
+		}
+		.dock-tree::after {
+			position: absolute;
+			bottom: 0;
+			left: 8px;
+			width: 4px;
+			height: 6px;
+			background: #795637;
+			content: "";
+		}
+		.dock-tree-one { left: 12%; transform: scale(.7); transform-origin: bottom; }
+		.dock-tree-two { left: 46%; transform: scale(.88); transform-origin: bottom; }
+		.dock-tree-three { right: 13%; }
+		.dock-cloud {
+			position: absolute;
+			top: 8px;
+			left: 32%;
+			width: 16px;
+			height: 6px;
+			background: #fffdf4;
+			box-shadow: -5px 5px 0 #fffdf4, 0 5px 0 #fffdf4, 5px 5px 0 #fffdf4;
+		}
+		.dock-cloud-two { top: 14px; left: 82%; transform: scale(.8); }
+		.dock-block {
+			position: absolute;
+			top: 7px;
+			left: 21%;
+			width: 19px;
+			height: 19px;
+			border: 2px solid var(--ink);
+			background: var(--yellow);
+			box-shadow: inset 2px 2px 0 #fff1a8, 2px 2px 0 var(--ink);
+		}
+		.dock-block::after { display: grid; height: 100%; place-items: center; color: var(--ink); content: "?"; font-size: 12px; font-weight: 800; }
+		.dock-block-two { left: calc(21% + 24px); }
+		.dock-coin {
+			position: absolute;
+			top: 7px;
+			left: calc(21% + 54px);
+			width: 11px;
+			height: 17px;
+			border: 2px solid #936a13;
+			border-radius: 50%;
+			background: var(--yellow);
+			box-shadow: inset 2px 0 0 #fff1a8;
+			animation: coin-bob .8s steps(2, end) infinite alternate;
+		}
+		.dock-pipe {
+			position: absolute;
+			bottom: 6px;
+			left: 72%;
+			width: 24px;
+			height: 22px;
+			border: 2px solid var(--ink);
+			background: #39a45d;
+			box-shadow: inset 4px 0 0 #82d17d;
+		}
+		.dock-pipe::before {
+			position: absolute;
+			top: -8px;
+			left: -5px;
+			width: 30px;
+			height: 8px;
+			border: 2px solid var(--ink);
+			background: #51bd69;
+			content: "";
+		}
+		.dock-pipe-two { left: 90%; transform: scale(.72); transform-origin: bottom; }
+		.dock-runner {
+			position: absolute;
+			bottom: 4px;
+			left: 0;
+			width: 22px;
+			height: 29px;
+			animation: runner-cross 19s linear infinite;
+		}
+		.runner-sprite { position: relative; width: 22px; height: 29px; animation: runner-bounce .28s steps(2, end) infinite; }
+		.runner-hat { position: absolute; top: 0; left: 3px; width: 15px; height: 5px; background: #d9523d; box-shadow: -3px 4px 0 #d9523d, 2px 4px 0 #d9523d; }
+		.runner-face { position: absolute; top: 5px; left: 7px; width: 9px; height: 7px; background: #f2c991; }
+		.runner-scarf { position: absolute; top: 12px; left: 4px; width: 15px; height: 4px; background: var(--yellow); }
+		.runner-coat { position: absolute; top: 16px; left: 5px; width: 13px; height: 8px; background: #4d8fbd; box-shadow: -3px 1px 0 #4d8fbd, 3px 1px 0 #4d8fbd; }
+		.runner-leg { position: absolute; bottom: 0; left: 6px; width: 5px; height: 6px; background: #283d4c; transform-origin: top center; animation: runner-step .28s steps(2, end) infinite alternate; }
+		.runner-leg-back { left: 13px; animation-delay: .14s; }
+		.dock-nav { display: flex; width: min(var(--content), 100%); min-height: 52px; align-items: center; justify-content: center; gap: 8px; margin-inline: auto; padding: 5px 16px; }
+		.dock-link {
+			display: inline-flex;
+			min-height: 38px;
+			align-items: center;
+			justify-content: center;
+			gap: 9px;
+			padding: 6px 16px;
+			border: 2px solid transparent;
+			color: #fff;
+			font-size: 13px;
+			font-weight: 700;
+			text-decoration: none;
+			transition: background .15s ease, color .15s ease;
+		}
+		.dock-link::before { width: 7px; height: 7px; background: var(--yellow); box-shadow: 3px 3px 0 rgba(0,0,0,.3); content: ""; }
+		.dock-link:hover { border-color: var(--ink); background: var(--yellow); color: var(--ink); }
+		.dock-link:focus-visible { outline-color: var(--yellow); }
+
+		@keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+		@keyframes arrive { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+		@keyframes runner-cross { from { transform: translateX(-28px); } to { transform: translateX(calc(100vw + 28px)); } }
+		@keyframes runner-bounce { 50% { transform: translateY(-2px); } }
+		@keyframes runner-step { to { transform: rotate(22deg) translateY(-1px); } }
+		@keyframes coin-bob { to { transform: translateY(-3px); } }
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+		}
+		@media (max-width: 900px) {
+			.intro-grid { grid-template-columns: minmax(0, 1fr) 250px; gap: 24px; }
+			.timeline-layout { grid-template-columns: minmax(0, 1fr) 235px; gap: 30px; }
+			.resource-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+		}
+		@media (max-width: 680px) {
+			.wrap { width: min(100% - 36px, var(--content)); }
+			.header-inner { min-height: 64px; }
+			.top-nav { gap: 16px; }
+			.top-nav a { font-size: 12px; }
+			.top-nav a:first-child { display: none; }
+			.dock-nav { justify-content: space-around; gap: 2px; padding-inline: 8px; }
+			.dock-link { flex: 1; gap: 6px; padding-inline: 7px; font-size: 12px; }
+			.intro { padding-block: 22px 10px; }
+			.intro-grid { grid-template-columns: 1fr; gap: 17px; }
+			.greeting { font-size: 23px; }
+			.section { padding-block: 46px; }
+			.section-heading { align-items: start; flex-direction: column; gap: 11px; margin-bottom: 22px; }
+			.section-heading h2 { font-size: 22px; }
+			.condition-grid { grid-template-columns: 1fr; gap: 12px; }
+			.condition-card { padding: 22px; }
+			.schedule-section { padding-block: 18px 46px; }
+			.schedule-heading { align-items: start; }
+			.filter-group { align-items: stretch; flex-direction: column; gap: 6px; }
+			.filter-label { flex-basis: auto; }
+			.filters { width: 100%; }
+			.filter-button { flex: 1; padding-inline: 8px; font-size: 12px; }
+			.timeline-layout { grid-template-columns: 1fr; gap: 35px; }
+			.schedule-aside { position: static; }
+			.timeline-item { grid-template-columns: 86px minmax(0, 1fr); gap: 13px; padding-block: 17px; }
+			.date-label { font-size: 12px; }
+			.event-title { font-size: 15px; }
+			.event-description { font-size: 13px; }
+			.resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.resource-link { min-height: 116px; padding: 14px; }
+			.closing-inner { align-items: start; flex-direction: column; gap: 16px; }
+		}
+		@media (max-width: 380px) {
+			.wrap { width: calc(100% - 28px); }
+			.top-nav { gap: 12px; }
+			.dock-link { gap: 5px; padding-inline: 4px; font-size: 11px; }
+			.section-kicker { font-size: 10px; }
+			.timeline-item { grid-template-columns: 72px minmax(0, 1fr); gap: 10px; }
+			.event-title-row { align-items: start; flex-direction: column; gap: 5px; }
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<section class="intro" id="start" aria-label="Wprowadzenie">
+			<div class="wrap intro-grid">
+				<div>
+					<p class="intro-greeting">Czuwaj!</p>
+					<h1 class="greeting" id="page-title">Terminarz AZ 2027</h1>
+					<p class="intro-copy">Przekazujemy najważniejsze informacje dotyczące przygotowań do Akcji Zimowej 2027 oraz harmonogram działań, o których należy pamiętać w najbliższych miesiącach. Prosimy o dokładne zapoznanie się z poniższymi informacjami i pilnowanie wskazanych terminów. Pozwoli to sprawnie przejść przez proces przygotowania zimowiska.</p>
+				</div>
+				<aside class="intro-note">
+					<strong>Ważne na początek</strong>
+					<p>Warunki wyjazdu różnią się w zależności od tego, czy akcja odbywa się w przerwie świątecznej, czy podczas ferii zimowych.</p>
+				</aside>
+			</div>
+		</section>
+
+		<section class="section conditions" id="warunki" aria-labelledby="conditions-title">
+			<div class="wrap">
+				<div class="section-heading">
+					<div>
+						<p class="section-kicker">Zanim zgłosicie akcję</p>
+						<h2 id="conditions-title">Warunki wyjazdu</h2>
+					</div>
+					<p>Spełnienie poniższych warunków jest niezbędne do zatwierdzenia kadry i uzyskania zgody na wyjazd.</p>
+				</div>
+				<div class="condition-grid">
+					<article class="condition-card">
+						<p class="condition-label">Akcja w przerwie świątecznej</p>
+						<h3>Dwa warunki do spełnienia</h3>
+						<ul>
+							<li>Aby Zarząd zatwierdził kadrę uchwałą, środowisko organizatora musi mieć <strong>zakończoną dokumentację AL 2026 do końca listopada</strong>. Niezakończony temat AL26 oznacza bezwzględny brak zgody na AZ27.</li>
+							<li>Aby Zarząd wydał zgodę na wyjazd, środowisko organizatora musi mieć <strong>uzupełnionego ZIHERa do końca listopada</strong>.</li>
+						</ul>
+						<p class="critical-note">Brak zakończonej dokumentacji AL 2026 oznacza brak zgody na AZ 2027.</p>
+					</article>
+					<article class="condition-card winter">
+						<p class="condition-label">Akcja podczas ferii zimowych</p>
+						<h3>Dokumentacja i zaangażowanie</h3>
+						<ul>
+							<li>Aby Zarząd zatwierdził kadrę uchwałą, środowisko organizatora musi mieć <strong>zakończoną dokumentację AL 2026 do końca listopada</strong>.</li>
+							<li>Aby Zarząd wydał zgodę, dokumentacja śródroczna musi być oddana i na zaawansowanym etapie zatwierdzania lub poprawiania: <strong>wszystkie faktury dołączone, bez braków merytorycznych</strong>.</li>
+							<li>Komendant jednostki i kwatermistrz powinni wykazywać się zaangażowaniem w proces.</li>
+						</ul>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="schedule-section" id="harmonogram" aria-labelledby="schedule-title">
+			<div class="wrap">
+				<div class="section-heading schedule-heading">
+					<div>
+						<p class="section-kicker">Zapisz te daty</p>
+						<h2 id="schedule-title">Harmonogram</h2>
+					</div>
+					<p>Daty w filtrach aktualizują się automatycznie. „Zbliża się” oznacza termin przypadający w ciągu najbliższych 21 dni.</p>
+				</div>
+
+				<div class="filter-wrap">
+					<div class="filter-group">
+						<span class="filter-label">Rodzaj akcji</span>
+						<div class="filters" role="group" aria-label="Filtruj rodzaj akcji">
+							<button class="filter-button" type="button" data-event-filter="all" aria-pressed="true">Wszystkie</button>
+							<button class="filter-button" type="button" data-event-filter="holiday" aria-pressed="false">Przerwa świąteczna</button>
+							<button class="filter-button" type="button" data-event-filter="winter" aria-pressed="false">Ferie zimowe</button>
+						</div>
+					</div>
+					<div class="filter-group">
+						<span class="filter-label">Status terminu</span>
+						<div class="filters" role="group" aria-label="Filtruj status terminu">
+						<button class="filter-button" type="button" data-filter="upcoming" aria-pressed="true">Zbliża się</button>
+						<button class="filter-button" type="button" data-filter="overdue" aria-pressed="false">Po terminie</button>
+						<button class="filter-button" type="button" data-filter="all" aria-pressed="false">Wszystko</button>
+						</div>
+					</div>
+					<p class="result-count" id="result-count" aria-live="polite"></p>
+				</div>
+
+				<div class="timeline-layout">
+					<div class="timeline" id="timeline">
+						<section class="month-group" aria-labelledby="month-nov">
+							<h3 class="month-title" id="month-nov">Listopad 2026</h3>
+							<article class="timeline-item" data-season="both" data-start="2026-11-08" data-end="2026-11-08">
+								<div class="date-block"><time class="date-label" datetime="2026-11-08">Do 8 listopada</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Zgłoszenie planowanej akcji</h4><span class="event-status"></span></div>
+									<p class="event-description">Poinformujcie referat o planowanej akcji zimowej. Na tym etapie nie musicie mieć skompletowanej kadry. Zgłoszenie można później wycofać, jeśli plany się zmienią. <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfN6wYqnA7Fhz8ntV90msqC0EYQ7u82mn2KS8NgrD9fryhQw/viewform" target="_blank" rel="noreferrer">Wypełnij ankietę zgłoszeniową</a>.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="both" data-start="2026-11-10" data-end="2026-11-10">
+								<div class="date-block"><time class="date-label" datetime="2026-11-10">10 listopada</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Przydzielenie osób sprawdzających foldery AZ</h4><span class="event-status"></span></div>
+									<p class="event-description">Każda akcja powinna mieć przypisaną osobę z referatu, odpowiedzialną za sprawdzanie dokumentacji na dysku. Jeśli nie macie jeszcze kontaktu, zgłoście się do referatu.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="both" data-start="2026-11-14" data-end="2026-11-14">
+								<div class="date-block"><time class="date-label" datetime="2026-11-14">Do 14 listopada</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Ostateczne uzupełnienie kadry</h4><span class="event-status"></span></div>
+									<p class="event-description">Jeśli w ankiecie zgłoszeniowej brakuje informacji o kadrze, uzupełnijcie je, wysyłając wiadomość do <a href="mailto:referat@zhr.pl">referat@zhr.pl</a> oraz <a href="mailto:zarzad.mal@zhr.pl">zarząd.mal@zhr.pl</a>.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="holiday" data-start="2026-11-15" data-end="2026-11-15">
+								<div class="date-block"><time class="date-label" datetime="2026-11-15">Do 15 listopada</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Raport i preliminarz · przerwa świąteczna</h4><span class="event-status"></span></div>
+									<p class="event-description">Wstawcie raport oraz preliminarz na dysk. Dokumenty będą weryfikowane przez referat, dlatego dopilnujcie terminu.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="both" data-start="2026-11-17" data-end="2026-11-17">
+								<div class="date-block"><time class="date-label" datetime="2026-11-17">17 listopada</time><span class="date-year">2026 · 18:00–20:00</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Spotkanie dla komendantów AZ</h4><span class="event-status"></span></div>
+									<p class="event-description">Spotkanie odbędzie się w okręgu, z możliwością udziału online. Najlepiej, aby uczestniczył komendant lub komendantka zimowiska. W razie potrzeby może ich zastąpić inna osoba z kadry.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="both" data-start="2026-11-24" data-end="2026-11-24">
+								<div class="date-block"><time class="date-label" datetime="2026-11-24">24 listopada</time><span class="date-year">2026 · 19:00–21:00</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Spotkanie dla kwatermistrzów AZ</h4><span class="event-status"></span></div>
+									<p class="event-description">Spotkanie online. Udział kwatermistrza jest obowiązkowy. Jeśli nie może uczestniczyć, powinien wysłać zastępstwo.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="winter" data-start="2026-11-29" data-end="2026-11-29">
+								<div class="date-block"><time class="date-label" datetime="2026-11-29">Do 29 listopada</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Raport i preliminarz · ferie zimowe</h4><span class="event-status"></span></div>
+									<p class="event-description">Wstawcie raport oraz preliminarz na dysk. Dokumenty będą weryfikowane przez referat, dlatego dopilnujcie terminu.</p>
+								</div>
+							</article>
+						</section>
+
+						<section class="month-group" aria-labelledby="month-dec">
+							<h3 class="month-title" id="month-dec">Grudzień 2026</h3>
+							<article class="timeline-item" data-season="holiday" data-start="2026-12-03" data-end="2026-12-03">
+								<div class="date-block"><time class="date-label" datetime="2026-12-03">Do 3 grudnia</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Uzupełnienie dysku · przerwa świąteczna</h4><span class="event-status"></span></div>
+									<p class="event-description">Wszystkie dokumenty dotyczące akcji powinny znajdować się na dysku i być uzupełnione. Wyjątkiem jest zgoda z kuratorium, którą można wgrać w dniu odbierania zgody na akcję.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="holiday" data-start="2026-12-04" data-end="2026-12-11">
+								<div class="date-block"><time class="date-label" datetime="2026-12-04">4–11 grudnia</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Sprawdzanie folderów · przerwa świąteczna</h4><span class="event-status"></span></div>
+									<p class="event-description">Pierwsze sprawdzenie dokumentacji na dyskach. Przed rozpoczęciem tego etapu zadbajcie o kompletność i poprawność dokumentów.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="holiday" data-start="2026-12-16" data-end="2026-12-17">
+								<div class="date-block"><time class="date-label" datetime="2026-12-16">16–17 grudnia</time><span class="date-year">2026</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Wydawanie zgód · przerwa świąteczna</h4><span class="event-status"></span></div>
+									<p class="event-description">W tych dniach będzie można odebrać zgody na organizację akcji. Nie przewidujemy innych terminów wydawania zgód, dlatego pilnujcie wcześniejszych dat.</p>
+								</div>
+							</article>
+						</section>
+
+						<section class="month-group" aria-labelledby="month-jan">
+							<h3 class="month-title" id="month-jan">Styczeń 2027</h3>
+							<article class="timeline-item" data-season="winter" data-start="2027-01-13" data-end="2027-01-13">
+								<div class="date-block"><time class="date-label" datetime="2027-01-13">Do 13 stycznia</time><span class="date-year">2027</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Uzupełnienie dysku · ferie zimowe</h4><span class="event-status"></span></div>
+									<p class="event-description">Wszystkie dokumenty dotyczące akcji powinny znajdować się na dysku i być uzupełnione. Wyjątkiem jest zgoda z kuratorium, którą można wgrać w dniu odbierania zgody na akcję.</p>
+								</div>
+							</article>
+							<article class="timeline-item" data-season="winter" data-start="2027-01-14" data-end="2027-01-21">
+								<div class="date-block"><time class="date-label" datetime="2027-01-14">14–21 stycznia</time><span class="date-year">2027</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Sprawdzanie folderów · ferie zimowe</h4><span class="event-status"></span></div>
+									<p class="event-description">Pierwsze sprawdzenie dokumentacji na dyskach. Przed rozpoczęciem tego etapu zadbajcie o kompletność i poprawność dokumentów.</p>
+								</div>
+							</article>
+						</section>
+
+						<section class="month-group" aria-labelledby="month-feb">
+							<h3 class="month-title" id="month-feb">Luty 2027</h3>
+							<article class="timeline-item" data-season="winter" data-start="2027-02-01" data-end="2027-02-05">
+								<div class="date-block"><time class="date-label" datetime="2027-02-01">1–5 lutego</time><span class="date-year">2027</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Wydawanie zgód · ferie zimowe</h4><span class="event-status"></span></div>
+									<p class="event-description">W tych dniach będzie można odebrać zgody na organizację akcji. Nie przewidujemy innych terminów wydawania zgód, dlatego pilnujcie wcześniejszych dat.</p>
+								</div>
+							</article>
+						</section>
+
+						<section class="month-group" aria-labelledby="dates-tba">
+							<h3 class="month-title" id="dates-tba">Termin zostanie podany</h3>
+							<article class="timeline-item" data-season="both" data-undated="true">
+								<div class="date-block"><span class="date-label">Osobny termin</span><span class="date-year">HOPR</span></div>
+								<div>
+									<div class="event-title-row"><h4 class="event-title">Kursy pierwszej pomocy dla wychowawców</h4><span class="event-status"></span></div>
+									<p class="event-description">Będą organizowane kursy pierwszej pomocy dla wychowawców. Zachęcamy do wcześniejszego zaplanowania udziału kadry, jeśli ktoś z zespołu potrzebuje uzupełnić wymagane kwalifikacje.</p>
+								</div>
+							</article>
+						</section>
+						<p class="no-results" id="no-results" hidden>Brak terminów w tym filtrze.</p>
+					</div>
+
+					<aside class="schedule-aside" aria-label="Skróty i ważne informacje">
+						<div class="aside-note">
+							<p class="aside-note-label">Dokumenty na dysku</p>
+							<p>Poza zgodą z kuratorium wszystkie dokumenty powinny być gotowe przed terminem uzupełnienia dysku. Zgodę można dodać <strong>w dniu odbierania zgody na akcję.</strong></p>
+							<a class="aside-link" href="https://docs.google.com/spreadsheets/d/1xzdu74u35z4G8uf03iFKVaoh0y_O2YZa3VLv_FmyYAQ/edit" target="_blank" rel="noreferrer">Sprawdź terminy wydawania zgód</a>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section class="resources" id="materialy" aria-labelledby="resources-title">
+			<div class="wrap">
+				<div class="section-heading">
+					<div>
+						<p class="section-kicker">Pod ręką</p>
+						<h2 id="resources-title">Najważniejsze linki</h2>
+					</div>
+					<p>Formularze i informacje przydatne podczas przygotowań do Akcji Zimowej.</p>
+				</div>
+				<div class="resource-grid">
+					<a class="resource-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdfN6wYqnA7Fhz8ntV90msqC0EYQ7u82mn2KS8NgrD9fryhQw/viewform" target="_blank" rel="noreferrer"><span class="resource-number">01 / ZGŁOSZENIE</span><span class="resource-name">Zgłoszenie Akcji Zimowej 2027</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+					<a class="resource-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfHkB1XRihX6-u1gtUDMWdHba2QHjzco2G-LPezV8YoVOJChg/viewform" target="_blank" rel="noreferrer"><span class="resource-number">02 / KADRA</span><span class="resource-name">Pełnomocnictwo dla komendanta</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+					<a class="resource-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfHoIMQlikU3Lu8VKYFt0dWt-WGPor-pXGgZi55ECXjSBcqWg/viewform" target="_blank" rel="noreferrer"><span class="resource-number">03 / KRK</span><span class="resource-name">Ankieta do uzyskania KRK</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+					<a class="resource-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdGEOW0AWGtEv5tjGPLpe8dYCU87O9LuJkVyQgCnvJnm_teIg/viewform" target="_blank" rel="noreferrer"><span class="resource-number">04 / RPS</span><span class="resource-name">Ankieta do sprawdzenia w RPS</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+					<a class="resource-link" href="https://docs.google.com/spreadsheets/d/1xzdu74u35z4G8uf03iFKVaoh0y_O2YZa3VLv_FmyYAQ/edit" target="_blank" rel="noreferrer"><span class="resource-number">05 / ZGODY</span><span class="resource-name">Terminy wydawania zgód na AZ 2027</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+		</section>
+
+		<section class="closing" aria-label="Kontakt">
+			<div class="wrap closing-inner">
+				<p>Monitorujcie postępy przygotowań i konsultujcie wątpliwości z wyprzedzeniem. W razie pytań lub problemów organizacyjnych jesteśmy do Waszej dyspozycji i chętnie pomożemy.</p>
+				<a class="contact-link" href="mailto:referat@zhr.pl">Napisz do referatu</a>
+			</div>
+		</section>
+	</main>
+
+	<footer class="winter-dock">
+		<div class="dock-scene" aria-hidden="true">
+			<span class="dock-tree dock-tree-one"></span>
+			<span class="dock-tree dock-tree-two"></span>
+			<span class="dock-tree dock-tree-three"></span>
+			<span class="dock-cloud"></span>
+			<span class="dock-cloud dock-cloud-two"></span>
+			<span class="dock-block"></span>
+			<span class="dock-block dock-block-two"></span>
+			<span class="dock-coin"></span>
+			<span class="dock-pipe"></span>
+			<span class="dock-pipe dock-pipe-two"></span>
+			<span class="dock-runner"><span class="runner-sprite"><span class="runner-hat"></span><span class="runner-face"></span><span class="runner-scarf"></span><span class="runner-coat"></span><span class="runner-leg"></span><span class="runner-leg runner-leg-back"></span></span></span>
+			<span class="dock-snow"></span>
+		</div>
+		<nav class="dock-nav" aria-label="Menu dolne">
+			<a class="dock-link" href="#harmonogram">Terminarz</a>
+			<a class="dock-link" href="#warunki">Warunki</a>
+			<a class="dock-link" href="#materialy">Linki</a>
+		</nav>
+	</footer>
+
+	<script>
+		const timelineItems = [...document.querySelectorAll(".timeline-item")];
+		const monthGroups = [...document.querySelectorAll(".month-group")];
+		const filterButtons = [...document.querySelectorAll(".filter-button[data-filter]")];
+		const eventFilterButtons = [...document.querySelectorAll("[data-event-filter]")];
+		const resultCount = document.querySelector("#result-count");
+		const noResults = document.querySelector("#no-results");
+		document.querySelector("#warunki").before(document.querySelector("#harmonogram"));
+		let activeEventFilter = "all";
+		let activeStatusFilter = "upcoming";
+		const today = new Date();
+		today.setHours(12, 0, 0, 0);
+		const nearDays = 21;
+
+		function localDate(value) {
+			const [year, month, day] = value.split("-").map(Number);
+			return new Date(year, month - 1, day, 12);
+		}
+
+		function dayDistance(date) {
+			return Math.round((date - today) / 86400000);
+		}
+
+		timelineItems.forEach((item) => {
+			const status = item.querySelector(".event-status");
+			if (item.dataset.undated) {
+				status.textContent = "Termin do ustalenia";
+				status.classList.add("is-open");
+				return;
+			}
+
+			const start = localDate(item.dataset.start);
+			const end = localDate(item.dataset.end);
+			if (end < today) {
+				status.textContent = "Po terminie";
+				status.classList.add("is-overdue");
+			} else if (start <= today && end >= today) {
+				status.textContent = "Dziś";
+				status.classList.add("is-now");
+			} else if (dayDistance(start) <= nearDays) {
+				status.textContent = "Zbliża się";
+				status.classList.add("is-near");
+			} else {
+				status.textContent = "W planie";
+			}
+		});
+
+		function applyFilter(filter) {
+			activeStatusFilter = filter;
+			let visible = 0;
+			timelineItems.forEach((item) => {
+				const undated = item.dataset.undated === "true";
+				const season = item.dataset.season || "both";
+				const start = undated ? null : localDate(item.dataset.start);
+				const end = undated ? null : localDate(item.dataset.end);
+				const isOverdue = end && end < today;
+				const distance = start ? dayDistance(start) : null;
+				const isUpcoming = start && distance >= 0 && distance <= nearDays;
+				const matchesSeason = activeEventFilter === "all" || season === "both" || season === activeEventFilter;
+				const matchesStatus = filter === "all" || (filter === "overdue" && isOverdue) || (filter === "upcoming" && isUpcoming);
+				const show = matchesSeason && matchesStatus;
+				item.hidden = !show;
+				if (show) visible += 1;
+			});
+
+			monthGroups.forEach((group) => {
+				group.hidden = !group.querySelector(".timeline-item:not([hidden])");
+			});
+			noResults.hidden = visible !== 0;
+			resultCount.textContent = `${visible} ${visible === 1 ? "termin" : visible > 1 && visible < 5 ? "terminy" : "terminów"}`;
+			filterButtons.forEach((button) => {
+				button.setAttribute("aria-pressed", String(button.dataset.filter === filter));
+			});
+			eventFilterButtons.forEach((button) => {
+				button.setAttribute("aria-pressed", String(button.dataset.eventFilter === activeEventFilter));
+			});
+		}
+
+		filterButtons.forEach((button) => {
+			button.addEventListener("click", () => applyFilter(button.dataset.filter));
+		});
+		eventFilterButtons.forEach((button) => {
+			button.addEventListener("click", () => {
+				activeEventFilter = button.dataset.eventFilter;
+				applyFilter(activeStatusFilter);
+			});
+		});
+		applyFilter("upcoming");
+	</script>
+</body>
+</html>
